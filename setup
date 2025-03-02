@@ -12,14 +12,13 @@ bin_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
 icon_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
 desk_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
 
-while getopts "u:i:" opt; do
+while getopts "ui" opt; do
   case $opt in
   u)
     rm -f "$bin_path/$file_name_bin"
     rm -f "$icon_path/$file_name_icon"
     rm -f "$desk_path/$file_name_desk"
     echo "Uninstalled $file_name from $bin_path"
-    return 0
     ;;
   i)
     mkdir -p "$bin_path" "$icon_path" "$desk_path"
@@ -34,7 +33,6 @@ while getopts "u:i:" opt; do
     ;;
   *)
     echo "Usage: setup -i | -u"
-    return 1
     ;;
   esac
 done
