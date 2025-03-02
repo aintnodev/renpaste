@@ -12,7 +12,7 @@ bin_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
 icon_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
 desk_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
 
-while getopts "ui" opt; do
+while getopts "uih" opt; do
   case $opt in
   u)
     rm -f "$bin_path/$file_name_bin"
@@ -31,8 +31,12 @@ while getopts "ui" opt; do
 
     echo "Installed $file_name_bin to $bin_path"
     ;;
+  h)
+    echo "Usage: $file_name_bin -i (install) | -u (uninstall)"
+    ;;
   *)
-    echo "Usage: setup -i | -u"
+    echo "Error: use $file_name_bin -h for usage"
+    exit 1
     ;;
   esac
 done
