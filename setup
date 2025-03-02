@@ -4,13 +4,13 @@ file_name_bin="renpaste"
 file_name_icon="renpaste.png"
 file_name_desk="renpaste.desktop"
 
-local bin_path="$HOME/.local/bin"
-local icon_path="$HOME/.local/share/"
-local desk_path="$HOME/.local/share/applications"
+bin_path="$HOME/.local/bin"
+icon_path="$HOME/.local/share/"
+desk_path="$HOME/.local/share/applications"
 
-local bin_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
-local icon_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
-local desk_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
+bin_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
+icon_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
+desk_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
 
 while getopts "u:i:" opt; do
   case $opt in
