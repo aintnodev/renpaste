@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=0.2
+Version=0.3
 Name=Ren'Paste
 Comment=Quickly copy all your Ren'Py saves
 Exec=$HOME/.local/bin/renpaste
