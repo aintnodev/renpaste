@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=0.1
+Version=0.2
 Name=Ren'Paste
 Comment=Quickly copy all your Ren'Py saves
 Path=$HOME/.local/bin
