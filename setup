@@ -1,0 +1,40 @@
+#!/bin/bash
+
+file_name_bin="renpaste"
+file_name_icon="renpaste.png"
+file_name_desk="renpaste.desktop"
+
+local bin_path="$HOME/.local/bin"
+local icon_path="$HOME/.local/share/"
+local desk_path="$HOME/.local/share/applications"
+
+local bin_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
+local icon_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
+local desk_url="https://github.com/aintnodev/renpy-saves/blob/main/$file_name"
+
+while getopts "u:i:" opt; do
+  case $opt in
+  u)
+    rm -f "$bin_path/$file_name_bin"
+    rm -f "$icon_path/$file_name_icon"
+    rm -f "$desk_path/$file_name_desk"
+    echo "Uninstalled $file_name from $bin_path"
+    return 0
+    ;;
+  i)
+    mkdir -p "$bin_path" "$icon_path" "$desk_path"
+
+    curl -L -o "$bin_path/$file_name_bin" "$bin_url"
+    curl -L -o "$icon_path/$file_name_icon" "$bin_url"
+    curl -L -o "$desk_path/$file_name_desk" "$bin_url"
+
+    chmod +x "$bin_path/$file_name_bin"
+
+    echo "Installed $file_name_bin to $bin_path"
+    ;;
+  *)
+    echo "Usage: setup -i | -u"
+    return 1
+    ;;
+  esac
+done

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+ROOT_SRC_DIR="$HOME/.var/app/com.usebottles.bottles/data/bottles/bottles"
+ROOT_GAME_DIR=$(find $ROOT_SRC_DIR -type d -name "saves" -path "*/game/saves")
+
+for SAVES_DIR in $ROOT_GAME_DIR; do
+  if [ -d $SAVES_DIR ]; then
+    SELECTED_DIR=$(echo "$SAVES_DIR" | awk -F '/' '{for(i=1; i<=NF; i++) if($i=="game") print $(i-1)}')
+    mkdir -p "$HOME/Saves/$SELECTED_DIR"
+    cp -r $SAVES_DIR "$HOME/Saves/$SELECTED_DIR"
+    notify-send "Success" "File saved at $HOME/Saves/$SELECTED_DIR."
+  else
+    notify-send "Error" "No 'saves' directories found for "$SELECTED_DIR"."
+  fi
+done
