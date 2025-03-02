@@ -1,9 +1,6 @@
 #!/bin/bash
 
-file_name_bin="renpaste"
-file_name_icon="renpaste.png"
-file_name_desk="renpaste.desktop"
-
+file_name="renpaste"
 bin_path="$HOME/.local/bin"
 icon_path="$HOME/.local/share/"
 desk_path="$HOME/.local/share/applications"
@@ -16,27 +13,27 @@ desk_url="$base_url/$file_name"
 while getopts "uih" opt; do
   case $opt in
   u)
-    rm -f "$bin_path/$file_name_bin"
-    rm -f "$icon_path/$file_name_icon"
-    rm -f "$desk_path/$file_name_desk"
+    rm -f "$bin_path/$file_name"
+    rm -f "$icon_path/$file_name.desktop"
+    rm -f "$desk_path/$file_name.png"
     echo "Uninstalled $file_name from $bin_path"
     ;;
   i)
     mkdir -p "$bin_path" "$icon_path" "$desk_path"
 
-    curl -L -o "$bin_path/$file_name_bin" "$bin_url"
-    curl -L -o "$icon_path/$file_name_icon" "$bin_url"
-    curl -L -o "$desk_path/$file_name_desk" "$bin_url"
+    curl -L -o "$bin_path/$file_name" "$bin_url"
+    curl -L -o "$icon_path/$file_name.desktop" "$bin_url"
+    curl -L -o "$desk_path/$file_name.png" "$bin_url"
 
-    chmod +x "$bin_path/$file_name_bin"
+    chmod +x "$bin_path/$file_name"
 
-    echo "Installed $file_name_bin to $bin_path"
+    echo "Installed $file_name to $bin_path"
     ;;
   h)
-    echo "Usage: $file_name_bin -i (install) | -u (uninstall)"
+    echo "Usage: $file_name -i (install) | -u (uninstall)"
     ;;
   *)
-    echo "Error: use $file_name_bin -h for usage"
+    echo "Error: use $file_name -h for usage"
     exit 1
     ;;
   esac
