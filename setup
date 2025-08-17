@@ -4,9 +4,9 @@ file_name="renpaste"
 bin_path="$HOME/.local/bin"
 icon_path="$HOME/.local/share/icons/hicolor/48x48/apps"
 desk_path="$HOME/.local/share/applications"
+tmp_path="/tmp/$file_name"
 
-base_url="https://raw.githubusercontent.com/aintnodev/renpaste/main"
-bin_url="$base_url/$file_name"
+repo_url=https://github.com/aintnodev/renpaste.git
 
 while getopts "uih" opt; do
   case $opt in
@@ -14,14 +14,17 @@ while getopts "uih" opt; do
     rm -f "$bin_path/$file_name"
     rm -f "$icon_path/$file_name.png"
     rm -f "$desk_path/$file_name.desktop"
+
     echo "Uninstalled $file_name from $bin_path"
     ;;
   i)
     mkdir -p "$bin_path" "$icon_path" "$desk_path"
 
-    curl -L -o "$bin_path/$file_name" "$bin_url"
-    curl -L -o "$icon_path/$file_name.png" "$bin_url.png"
-    curl -L -o "$desk_path/$file_name.desktop" "$bin_url.desktop"
+    git clone "$repo_url" "$tmp_path"
+
+    cp "$tmp_path/$file_name" "$bin_path/$file_name"
+    cp "$tmp_path/$file_name.png" "$icon_path/$file_name.png"
+    cp "$tmp_path/$file_name.desktop" "$desk_path/$file_name.desktop"
 
     chmod +x "$bin_path/$file_name"
 
