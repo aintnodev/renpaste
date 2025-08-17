@@ -1,6 +1,6 @@
 # Ren'Paste
 
-_does exactly what it says_
+_Shell utility to quickly copy Ren'Py saves to desired folder, by launching like a regular app_
 
 ## Installation
 
